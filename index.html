@@ -1,4 +1,81 @@
 <!DOCTYPE html>
-<html>
-Merhaba
-</hmtl>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8">
+  <title>Not Ortalaması Hesaplama</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #f2f2f2;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+    }
+
+    .container {
+      background: #fff;
+      padding: 30px;
+      border-radius: 10px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.2);
+      width: 300px;
+      text-align: center;
+    }
+
+    input {
+      width: 100%;
+      padding: 10px;
+      margin: 10px 0;
+      font-size: 16px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+    }
+
+    button {
+      width: 100%;
+      padding: 10px;
+      background-color: #28a745;
+      color: white;
+      border: none;
+      font-size: 16px;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+
+    button:hover {
+      background-color: #218838;
+    }
+
+    #sonuc {
+      margin-top: 15px;
+      font-size: 18px;
+      font-weight: bold;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h2>Not Ortalaması Hesapla</h2>
+    <input type="number" id="vize" placeholder="Vize notu" min="0" max="100">
+    <input type="number" id="final" placeholder="Final notu" min="0" max="100">
+    <button onclick="hesapla()">Hesapla</button>
+    <div id="sonuc"></div>
+  </div>
+
+  <script>
+    function hesapla() {
+      const vize = parseFloat(document.getElementById('vize').value);
+      const final = parseFloat(document.getElementById('final').value);
+      const sonucDiv = document.getElementById('sonuc');
+
+      if (isNaN(vize) || isNaN(final)) {
+        sonucDiv.textContent = 'Lütfen her iki notu da giriniz.';
+        return;
+      }
+
+      const ortalama = (vize * 0.4) + (final * 0.6);
+      sonucDiv.textContent = 'Not Ortalaması: ' + ortalama.toFixed(2);
+    }
+  </script>
+</body>
+</html>
